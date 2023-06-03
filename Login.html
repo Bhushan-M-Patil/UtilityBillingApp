@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>About - Serenity Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <style>
+    .backgroundImg{
+      background-image: url("assets/img/login.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .login-form {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        max-width: 400px;
+        width: 100%;
+    }
+
+    .login-form h2 {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .login-form .form-group {
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    .login-form .form-group label {
+        font-weight: bold;
+    }
+
+    .login-form .form-control {
+        padding-left: 40px;
+    }
+
+    .login-form .form-control:focus {
+        box-shadow: none;
+    }
+
+    .login-form .error-text {
+        color: #ff0707;
+        position: absolute;
+        bottom: -20px;
+    }
+
+    .login-form .remember-me {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .login-form button[type="submit"] {
+        width: 100%;
+    }
+</style>
+</head>
+
+<body class="backgroundImg">
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <div class="logo">
+        <h1 class="text-light"><a href="index.html">Utility Billing Application</a>
+          <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a></h1>
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a class="active" href="about.html">About</a></li>
+              <li><a href="team.html">Team</a></li>
+            </ul>
+          </li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="newConnection.html">New Connection</a></li>
+          <li><a href="TrackApplication.html">Track Application</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+     
+      <div class="container">
+        <ol>
+          <li><a href="index.html">Home</a></li>
+          <li>Login</li>
+        </ol>
+      </div>
+    </section><!-- End Breadcrumbs -->
+    <div class="container align-content-center">
+      <div class="login-form">
+          <h2>Login</h2>
+          <form id="loginForm">
+              <div class="form-group">
+                  <label for="username">Username</label>
+                  <input type="text" class="form-control" id="username" placeholder="Enter your username" >
+                  <small class="error-text" id="usernameError"></small>
+              </div>
+              <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" class="form-control" id="password" placeholder="Enter your password" >
+                  <br><small class="error-text" id="passwordError"></small>
+              </div>
+              <div class="form-group remember-me">
+                  <input type="checkbox" class="form-check-input" id="rememberMe">
+                  <label class="form-check-label" for="rememberMe">Remember me</label>
+              </div>
+              <button type="submit" class="btn btn-primary">Login</button>
+          </form>
+      </div>
+  </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        // Reset error messages
+        document.getElementById("usernameError").innerText = "";
+        document.getElementById("passwordError").innerText = "";
+
+        // Retrieve form values
+        var username = document.getElementById("username").value.trim();
+        var password = document.getElementById("password").value;
+
+        // Validation conditions
+        var isValid = true;
+
+        if (username === "") {
+            isValid = false;
+            document.getElementById("usernameError").innerText = "Username is required.";
+        } else if (username.length < 8 || username.length > 64) {
+            isValid = false;
+            document.getElementById("usernameError").innerText = "Username must be between 8 and 64 characters.";
+        } else if (/\s/.test(username)) {
+            isValid = false;
+            document.getElementById("usernameError").innerText = "Username must not contain spaces.";
+        }
+
+        if (password === "") {
+            isValid = false;
+            document.getElementById("passwordError").innerText = "Password is required.";
+        } else if (password.length < 8 || password.length > 64) {
+            isValid = false;
+            document.getElementById("passwordError").innerText = "Password must be between 8 and 64 characters.";
+        } else if (/\s/.test(password)) {
+            isValid = false;
+            document.getElementById("passwordError").innerText = "Password must not contain spaces.";
+        } else if (!/\d/.test(password) || !/[!@#$%^&*]/.test(password)) {
+            isValid = false;
+            document.getElementById("passwordError").innerText = "Password must contain a number and a special character.";
+        }
+
+        // If form is valid, submit or show error
+        if (isValid) {
+            //save user data to local storage if remember me checkbox is checked
+            if (document.getElementById("rememberMe").checked) {
+            localStorage.setItem("username", username);
+            localStorage.setItem("password", password);
+        }
+
+            alert("Form submitted successfully!");
+            document.getElementById("loginForm").submit(); // Uncomment this line to actually submit the form
+        } else {
+            // Scroll to the top of the form
+            window.scrollTo({
+                top: document.getElementById("loginForm").offsetTop,
+                behavior: "smooth"
+            });
+        }
+
+         // Fill in the username and password from local storage if available
+         window.addEventListener("DOMContentLoaded", function() {
+        var savedUsername = localStorage.getItem("username");
+        var savedPassword = localStorage.getItem("password");
+
+        if (savedUsername && savedPassword) {
+            document.getElementById("username").value = savedUsername;
+            document.getElementById("password").value = savedPassword;
+            document.getElementById("rememberMe").checked = true;
+        }
+    });
+    });
+</script>
+</body>
+
+</html>
