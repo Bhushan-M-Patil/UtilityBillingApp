@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Pricing - Serenity Bootstrap Template</title>
+  <title>Utility Billing</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -37,6 +37,7 @@
       font-size: 20px;
       color: white;
     }
+
   </style>
   <!-- =======================================================
   * Template Name: Serenity
@@ -99,11 +100,12 @@
         <h2 class="text-center mt-5 font-weight-bolder text-uppercase text">New Connection Form<i><img src="assets/img/logo.png" alt="symbol-of-mahavitaran" width="60px" height="60px"></i></h2>
     
         <fieldset class="border border-dark  p-5 mt-5 background">
-          <form>
+          <form id="signup-form">
             <div class="form-group row">
                 <label for="username" class="col-sm-6 col-form-label">Username (max 16 characters):</label>
                 <div class="col-sm-6">
-                  <input type="text" class="form-control" id="username" maxlength="16" required>
+                  <input type="text" class="form-control" id="username" name="username" oninput="validateUsername()" required>
+                  <small id="username-error" class="text-warning"></small>
                 </div>
             </div>
             <div><br></div>
@@ -111,7 +113,7 @@
             <div class="form-group row">
                 <label for="email" class="col-sm-6 col-form-label">Email:</label>
                 <div class="col-sm-6">
-                  <input type="email" class="form-control" id="email" required>
+                  <input type="email" class="form-control" name="email" id="email" required>
                 </div>
             </div>
             <div><br></div>
@@ -119,7 +121,8 @@
             <div class="form-group row">
                 <label for="password" class="col-sm-6 col-form-label">Password (max 16 characters):</label>
                 <div class="col-sm-6">
-                    <input type="password" class="form-control" id="password" maxlength="16" required>
+                    <input type="password" class="form-control" id="password" name="password" oninput="validatePassword()" required>
+                    <small id="password-error" class="text-warning"></small>
                 </div>   
             </div>
             <div><br></div>
@@ -129,15 +132,15 @@
                 <div class="col-sm-6">
                     <div class=" form-group row">
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" id="radio1" name="gender" value="option1">
+                            <input type="radio" class="form-check-input" id="radio1" name="gender" value="Male" required>
                             <label class="form-check-label" for="radio1">Male&ensp;&ensp;&ensp;&ensp;</label>
                           </div>
                           <div class="form-check">
-                            <input type="radio" class="form-check-input" id="radio2" name="gender" value="option2">
+                            <input type="radio" class="form-check-input" id="radio2" name="gender" value="Female">
                             <label class="form-check-label" for="radio2">Female&ensp;&ensp;&ensp;&ensp;</label>
                           </div>
                           <div class="form-check">
-                            <input type="radio" class="form-check-input" id="radio3" name="gender" value="option3">
+                            <input type="radio" class="form-check-input" id="radio3" name="gender" value="Other">
                             <label class="form-check-label" for="radio3">Other&ensp;&ensp;&ensp;&ensp;</label>
                           </div>
                     </div>
@@ -148,7 +151,7 @@
             <div class="form-group row">
                 <label for="state" class="col-sm-6 col-form-label">Select State:</label>
                 <div class="col-sm-6">
-                    <select class="form-control" id="state">
+                    <select class="form-control" name="state" id="state" required>
                         <option value="">-- Select State --</option>
                         <option value="Andhra Pradesh">Andhra Pradesh</option>
                         <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -193,7 +196,7 @@
             <div class="form-group row">
                 <label for="city" class="col-sm-6 col-form-label">City: </label>
                 <div class="col-sm-6">
-                    <input type="city" class="form-control" id="city" required>
+                    <input type="city" class="form-control" name="city" id="city" required>
                 </div>   
             </div>
     
@@ -202,19 +205,19 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label for="flat">Flat No/Building Name:</label>
-                        <input type="text" class="form-control" id="flat" required>
+                        <input type="text" name="building" class="form-control" id="flat" required>
                     </div>
                     <div class="form-group">
                         <label for="lane">Lane/Street:</label>
-                        <input type="text" class="form-control" id="lane" required>
+                        <input type="text" name="street" class="form-control" id="lane" required>
                     </div>
                     <div class="form-group">
                         <label for="landmark">Landmark:</label>
-                        <input type="text" class="form-control" id="landmark" required>
+                        <input type="text" name="landmark" class="form-control" id="landmark" required>
                     </div>
                     <div class="form-group">
                          <label for="suburb">Suburb/City:</label>
-                        <input type="text" class="form-control" id="suburb" required>
+                        <input type="text" name="city" class="form-control" id="suburb" required>
                     </div>            
                </div>   
             </div>
@@ -223,7 +226,8 @@
             <div class="form-group row">
                 <label class="col-sm-6 col-form-label" for="dob" >Date of Birth:</label>
                 <div class="col-sm-6">
-                   <input type="date" class="form-control" id="dob" max="2005-05-01" required>
+                   <input type="date" class="form-control" id="dob" name="dob" oninput="isDateMoreThan18YearsAgo()" required>
+                   <small id="dob-error" class="text-warning"></small>
                </div>   
             </div>
             <div><br></div>
@@ -231,7 +235,7 @@
             <div class="form-group row">
                 <label class="col-sm-6 col-form-label" for="phoneNo">Mobile Number:</label>
                 <div class="col-sm-6">
-                    <input type="tel" class="form-control" id="phoneNo" pattern="[0-9]{10}">
+                    <input type="tel" class="form-control" name="mobileNo" id="phoneNo" pattern="[0-9]{10}">
                 </div>
             </div>
             <div><br></div>
@@ -240,7 +244,7 @@
             <div class="form-group row">
                 <label class="col-sm-6 col-form-label" for="marital-status">Marital Status:</label>
                 <div class="col-sm-6">
-                    <select class="form-control" id="marital-status">
+                    <select class="form-control" name="marital-status" id="marital-status">
                         <option value="">-- marital-status --</option>
                         <option value="Single">Single</option>
                         <option value="Married">Married</option>
@@ -255,7 +259,7 @@
             <div class="form-group row">
                 <label class="col-sm-6 col-form-label" for="load">Required Load in Meter (Single phase / 3 phase):</label>
                 <div class="col-sm-6">
-                    <input type="number" class="form-control" id="load" required>
+                    <input type="number" class="form-control" name="load" id="load" required>
                 </div>
             </div>
             <div><br></div>
@@ -264,7 +268,7 @@
             <div class="form-group row">
                 <label class="col-sm-6 col-form-label" for="Connection-type">Connection Type:</label>
                 <div class="col-sm-6">
-                    <select class="form-control" id="Connection-type">
+                    <select class="form-control" name="connection" id="Connection-type">
                         <option value="">-- Connection type --</option>
                         <option value="Commercial">Commercial</option>
                         <option value="Non-Commercial">Non-Commercial</option>
@@ -274,9 +278,9 @@
             <br>
             <br>
             <div class="text-center">
-                <button type="submit" class="btn btn-primary col-6 text-center p-2">Apply</button>
+                <button type="submit" class="btn btn-primary col-6 text-center p-2" id="submit-btn">Apply</button>
             </div>
-        
+            
           </form>
         </fieldset>
       </div>
@@ -288,17 +292,17 @@
 
         <div class="section-title" data-aos="fade-up">
           <h2>Frequently Asked Questions</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p>Here are some frequently asked questions from our consumers. And if you have any query or doubt then fell free to reach out to us.</p>
         </div>
 
         <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up">
           <div class="col-lg-5">
             <i class="bx bx-help-circle"></i>
-            <h4>Non consectetur a erat nam at lectus urna duis?</h4>
+            <h4> How can I view my electricity bill online?</h4>
           </div>
           <div class="col-lg-7">
             <p>
-              Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
+              To view your electricity bill online, log in to your account on the electricity billing application. Navigate to the billing section or dashboard, where you should find a summary of your current bill. Click on the bill to view the detailed breakdown, including usage, charges, and payment due date.
             </p>
           </div>
         </div><!-- End F.A.Q Item-->
@@ -306,11 +310,11 @@
         <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
           <div class="col-lg-5">
             <i class="bx bx-help-circle"></i>
-            <h4>Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque?</h4>
+            <h4>Can I make online payments for my electricity bill?</h4>
           </div>
           <div class="col-lg-7">
             <p>
-              Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim.
+              Yes, most electricity billing applications provide online payment options. You can typically make payments using various methods such as credit/debit cards, net banking, or digital wallets. Select the preferred payment method and follow the instructions to complete the transaction securely.
             </p>
           </div>
         </div><!-- End F.A.Q Item-->
@@ -318,11 +322,11 @@
         <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
           <div class="col-lg-5">
             <i class="bx bx-help-circle"></i>
-            <h4>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi?</h4>
+            <h4>How can I track my electricity consumption using the billing application?</h4>
           </div>
           <div class="col-lg-7">
             <p>
-              Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus.
+              The electricity billing application often offers features to monitor your consumption. Look for sections like "Usage History" or "Consumption Trends" in your account dashboard. Here, you can view graphical representations of your electricity usage over time, compare it with previous periods, and identify trends or patterns.
             </p>
           </div>
         </div><!-- End F.A.Q Item-->
@@ -330,11 +334,11 @@
         <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
           <div class="col-lg-5">
             <i class="bx bx-help-circle"></i>
-            <h4>Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?</h4>
+            <h4>I have received a high electricity bill. What should I do?</h4>
           </div>
           <div class="col-lg-7">
             <p>
-              Aperiam itaque sit optio et deleniti eos nihil quidem cumque. Voluptas dolorum accusantium sunt sit enim. Provident consequuntur quam aut reiciendis qui rerum dolorem sit odio. Repellat assumenda soluta sunt pariatur error doloribus fuga.
+              If you receive a significantly higher electricity bill than usual, there could be several reasons. First, check if there has been a change in your usage patterns or any appliances running for extended periods. Additionally, ensure that your meter readings are accurate. If you still have concerns, contact the customer support of your electricity provider through the billing application or helpline to investigate and resolve the issue.
             </p>
           </div>
         </div><!-- End F.A.Q Item-->
@@ -342,11 +346,11 @@
         <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
           <div class="col-lg-5">
             <i class="bx bx-help-circle"></i>
-            <h4>Tempus quam pellentesque nec nam aliquam sem et tortor consequat?</h4>
+            <h4>Can I set up automatic bill payment through the electricity billing application?</h4>
           </div>
           <div class="col-lg-7">
             <p>
-              Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in
+              Yes, many electricity billing applications offer an option to set up automatic bill payments. This allows you to link your preferred payment method and authorize the application to deduct the bill amount automatically on the due date. By setting up auto-pay, you ensure timely payments without the need for manual intervention.
             </p>
           </div>
         </div><!-- End F.A.Q Item-->
@@ -363,8 +367,9 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-info">
-            <h3>Serenity</h3>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
+            <h3>Utility Billing Application</h3>
+            <p> An electricity utility billing app is a software solution designed for managing billing processes in utility companies. 
+              It helps generate accurate bills based on customer electricity usage and handles payment transactions securely.</p>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
@@ -381,11 +386,11 @@
           <div class="col-lg-3 col-md-6 footer-contact">
             <h4>Contact Us</h4>
             <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
+              A108 mumbai local Street <br>
+              Mumbai, 535022<br>
+              India <br>
+              <strong>Phone:</strong> +91 5589 5548 55<br>
+              <strong>Email:</strong> utiltityBill@gmail.com<br>
             </p>
 
             <div class="social-links">
@@ -399,7 +404,7 @@
 
           <div class="col-lg-3 col-md-6 footer-newsletter">
             <h4>Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore legam minim quorum culpa amet magna export quem marada parida nodela caramase seza.</p>
+            <p>Get in touch with us daily by getting newsletter from us.</p>
             <form action="" method="post">
               <input type="email" name="email"><input type="submit" value="Subscribe">
             </form>
@@ -411,14 +416,10 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>Serenity</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>Utility Billing Application</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/serenity-bootstrap-corporate-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        Designed by <a href="https://github.com/">Bhushan</a>
       </div>
     </div>
   </footer><!-- End Footer -->
@@ -437,6 +438,8 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/newConnection.js"></script>
+
 
 </body>
 

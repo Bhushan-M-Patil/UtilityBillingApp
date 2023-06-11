@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Admin Dashboard</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/admin.css">
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <div class="logo">
+        <h1 class="text-light"><a href="index.html">Utility Billing Application</a>
+          <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a></h1>
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="about.html">About</a></li>
+              <li><a href="team.html">Team</a></li>
+            </ul>
+          </li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="newConnection.html">New Connection</a></li>
+          <li><a class="active" href="TrackApplication.html">Track Application</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a class="getstarted" href="index.html"><img src="avatar-5.jpg" alt="Admin" class="admin-avatar">logout</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+        <ol>
+          <li><a href="index.html">Home</a></li>
+          <li>Admin dashboard</li>
+        </ol>
+      </div>
+    </section> 
+
+<body>
+  <!-- Sidebar -->
+  <div class="container-fluid">
+    <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+              <h6 class="sidebar-heading">Menu</h6>
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link active" href="#">
+                    <span data-feather="home"></span>
+                    Home
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <span data-feather="users"></span>
+                    Users
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <span data-feather="settings"></span>
+                    Settings
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+
+      <!-- Main Content -->
+      <main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-md-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">Admin Dashboard</h1>
+          <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group mr-2">
+              <button class="btn btn-sm btn-outline-secondary">Share</button>
+              <button class="btn btn-sm btn-outline-secondary">Export</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Table -->
+        <div class="table-responsive m-5 pb-5">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Load</th>
+                <th>Connection</th>
+                <th>Mobile Number</th>
+                <th>City</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody id="userTable">
+              <!-- Table rows will be generated dynamically -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- User Details Popup -->
+        <div id="userDetailsPopup" class="popup">
+          <div class="popup-card">
+            <span id="closeButton" class="close-button" onclick="closeUserDetails()">&times;</span>
+            <div id="userDetailsContent">
+              <!-- User details will be shown dynamically -->
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+   <!-- ======= Footer ======= -->
+   <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-info">
+            <h3>Utility Billing Application</h3>
+            <p> An electricity utility billing app is a software solution designed for managing billing processes in utility companies. 
+              It helps generate accurate bills based on customer electricity usage and handles payment transactions securely.</p>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Terms of service</a></li>
+              <li><a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h4>Contact Us</h4>
+            <p>
+              A108 mumbai local Street <br>
+              Mumbai, 535022<br>
+              India <br>
+              <strong>Phone:</strong> +91 5589 5548 55<br>
+              <strong>Email:</strong> utiltityBill@gmail.com<br>
+            </p>
+
+            <div class="social-links">
+              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            </div>
+
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-newsletter">
+            <h4>Our Newsletter</h4>
+            <p>Get in touch with us daily by getting newsletter from us.</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Utility Billing Application</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        Designed by <a href="https://github.com/">Bhushan</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+  
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Template Main JS File -->
+<script src="assets/js/main.js"></script>
+  <!-- Custom JavaScript -->
+  <script src="assets/js/admin.js"></script>
+
+</body>
+
+</html>
